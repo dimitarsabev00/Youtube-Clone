@@ -1,7 +1,13 @@
 import "./App.css";
+import { BrowserRouter } from "react-router-dom";
+import Routes from "./components/Routes/Routes";
 
 const App = () => {
-  return <div>Youtube Clone</div>;
+  return (
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
+  );
 };
 
 export default App;
