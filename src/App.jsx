@@ -1,11 +1,14 @@
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
-import { Routes } from "./components";
+import { Header, Routes } from "./components";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Routes />
+      <div className="flex flex-col h-full">
+        <Header />
+        <Routes />
+      </div>
     </BrowserRouter>
   );
 };
