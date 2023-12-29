@@ -1,12 +1,13 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { categories } from "../../utilities";
 import SidebarItem from "./SidebarItem";
 
-const Sidebar = () => {
+const Sidebar = ({mobileMenu, setMobileMenu}) => {
   const [selectedCategory, setSelectedCategory] = useState("New");
 
-  const [mobileMenu, setMobileMenu] = useState(false);
 
   const navigate = useNavigate();
 

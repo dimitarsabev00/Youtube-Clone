@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -12,10 +13,9 @@ import { CgClose } from "react-icons/cg";
 import Loader from "../Loader/Loader";
 
 
-const Header = () => {
+const Header = ({mobileMenu, setMobileMenu}) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(false);
-  const [mobileMenu, setMobileMenu] = useState(false);
 
   const navigate = useNavigate();
 
