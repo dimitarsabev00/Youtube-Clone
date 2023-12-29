@@ -4,7 +4,7 @@ import Header from "../Header/Header";
 import { useState } from "react";
 
 const RoutesComp = () => {
-  const [mobileMenu, setMobileMenu] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(true);
 
   return (
     <>
