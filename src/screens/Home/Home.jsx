@@ -1,11 +1,14 @@
-import React from 'react'
+/* eslint-disable no-unused-vars */
+import React from "react";
+import { Sidebar } from "../../components";
 
 const Home = () => {
   return (
-    <h1 className="text-3xl font-bold underline">
-      HomeScreen
-    </h1>
-  )
-}
+    <div className="flex flex-row h-[calc(100%-56px)]">
+      <Sidebar />
+      Home Screen
+    </div>
+  );
+};
 
-export default Home
+export default Home;
