@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  categoryResult: [],
+  selectedCategory: "New",
   loading: false,
   loadingText: "Loading...",
   modal: { isOpen: false, type: "", props: {} },
