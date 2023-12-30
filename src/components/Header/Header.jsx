@@ -13,11 +13,9 @@ import { CgClose } from "react-icons/cg";
 import Loader from "../Loader/Loader";
 import { useSelector } from "react-redux";
 
-
-const Header = ({mobileMenu, setMobileMenu}) => {
+const Header = ({ mobileMenu, setMobileMenu }) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const { loading } = useSelector(({ general }) => general);
-
+  const { loading } = useSelector(({ generalSlice }) => generalSlice);
 
   const navigate = useNavigate();
 
