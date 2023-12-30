@@ -4,18 +4,20 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { categories } from "../../utilities";
 import SidebarItem from "./SidebarItem";
+import { useDispatch, useSelector } from "react-redux";
+import { setGeneralFields } from "../../store";
 
-const Sidebar = ({ mobileMenu, setMobileMenu }) => {
-  const [selectedCategory, setSelectedCategory] = useState("New");
+const Sidebar = () => {
+  const { selectedCategory } = useSelector(({ generalSlice }) => generalSlice);
 
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const clickHandler = (name, type) => {
     switch (type) {
       case "category":
-        return setSelectedCategory(name);
+        return dispatch(setGeneralFields({ selectedCategory: name }));
       case "home":
-        return setSelectedCategory(name);
+        return dispatch(setGeneralFields({ selectedCategory: name }));
       case "menu":
         return false;
       default:
@@ -24,7 +26,7 @@ const Sidebar = ({ mobileMenu, setMobileMenu }) => {
   };
   return (
     <div
-      className={` w-[240px] overflow-y-auto h-full py-4 bg-black relative z-10`}
+      className={`w-[240px] overflow-y-auto h-full py-4 bg-black relative z-10`}
     >
       <div className="flex px-5 flex-col">
         {categories.map((item) => {
