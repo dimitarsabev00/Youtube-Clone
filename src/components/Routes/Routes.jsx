@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Home, Search, Watch } from "../../screens";
+import { Home, Search, VideoDetails } from "../../screens";
 import Header from "../Header/Header";
 import { useState } from "react";
 
@@ -12,7 +12,7 @@ const RoutesComp = () => {
       <Routes>
         <Route exact path="/" element={<Home mobileMenu={mobileMenu} setMobileMenu={setMobileMenu}/>} />
         <Route exact path="/search/:searchQuery" element={<Search />} />
-        <Route exact path="/watch" element={<Watch />} />
+        <Route exact path="/video/:id" element={<VideoDetails />} />
       </Routes>
     </>
   );
