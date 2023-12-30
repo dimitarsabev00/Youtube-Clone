@@ -11,11 +11,13 @@ import { RiVideoAddLine } from "react-icons/ri";
 import { FiBell } from "react-icons/fi";
 import { CgClose } from "react-icons/cg";
 import Loader from "../Loader/Loader";
+import { useSelector } from "react-redux";
 
 
 const Header = ({mobileMenu, setMobileMenu}) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [loading, setLoading] = useState(false);
+  const { loading } = useSelector(({ general }) => general);
+
 
   const navigate = useNavigate();
 
