@@ -11,7 +11,7 @@ const RoutesComp = () => {
       <Header mobileMenu={mobileMenu} setMobileMenu={setMobileMenu}/>
       <Routes>
         <Route exact path="/" element={<Home mobileMenu={mobileMenu} setMobileMenu={setMobileMenu}/>} />
-        <Route exact path="/search" element={<Search />} />
+        <Route exact path="/search/:searchQuery" element={<Search />} />
         <Route exact path="/watch" element={<Watch />} />
       </Routes>
     </>
