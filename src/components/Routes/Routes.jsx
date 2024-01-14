@@ -20,7 +20,7 @@ const RoutesComp = () => {
         <Route
           exact
           path="/searchResult/:searchQuery"
-          element={<SearchResult />}
+          element={<SearchResult mobileMenu={mobileMenu} setMobileMenu={setMobileMenu}/>}
         />
         <Route exact path="/video/:id" element={<VideoDetails />} />
       </Routes>
