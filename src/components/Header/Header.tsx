@@ -87,8 +87,11 @@ const Header = ({ mobileMenu, setMobileMenu }) => {
           <div className="flex items-center justify-center h-10 w-10 rounded-full hover:bg-[#303030]/[0.6]">
             <RiVideoAddLine className="text-white text-xl cursor-pointer" />
           </div>
-          <div className="flex items-center justify-center ml-2 h-10 w-10 rounded-full hover:bg-[#303030]/[0.6]">
+          <div className="flex items-center justify-center ml-2 h-10 w-10 rounded-full hover:bg-[#303030]/[0.6] relative">
             <FiBell className="text-white text-xl cursor-pointer" />
+            <span className="absolute right-1 top-1 text-xs bg-red-600 rounded-full px-1">
+              9+
+            </span>
           </div>
         </div>
         <div className="flex h-8 w-8 overflow-hidden rounded-full md:ml-4">
