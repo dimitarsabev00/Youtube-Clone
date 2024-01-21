@@ -7,7 +7,7 @@ import { HomePageVideos } from "../../Types";
 
 const VideoCard = ({ data }: { data: HomePageVideos }) => {
   return (
-    <Link to={`/video/${data.videoId}`}>
+    <Link to={`/watch/${data.videoId}`}>
       <div className="flex flex-col mb-8">
         <div className="relative h-48 md:h-40 md:rounded-xl overflow-hidden">
           <img
@@ -35,7 +35,7 @@ const VideoCard = ({ data }: { data: HomePageVideos }) => {
             <span className="text-[12px] font-semibold mt-2 text-white/[0.7] flex items-center">
               {data.channelInfo.name}
 
-                <BsFillCheckCircleFill className="text-white/[0.5] text-[12px] ml-1" />
+              <BsFillCheckCircleFill className="text-white/[0.5] text-[12px] ml-1" />
             </span>
             <div className="flex text-[12px] font-semibold text-white/[0.7] truncate overflow-hidden">
               <span>{`${data.videoViews} views`}</span>
