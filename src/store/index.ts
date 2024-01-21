@@ -3,17 +3,10 @@ import generalSlice from "./slices/generalSlice";
 
 export * from "./slices/generalSlice";
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     generalSlice,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: ["generalSlice/setModal"],
-        ignoredPaths: ["generalSlice.modal"],
-      },
-    }),
 });
 
 export default store;
