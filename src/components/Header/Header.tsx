@@ -10,12 +10,9 @@ import { IoIosSearch } from "react-icons/io";
 import { RiVideoAddLine } from "react-icons/ri";
 import { FiBell } from "react-icons/fi";
 import { CgClose } from "react-icons/cg";
-import Loader from "../Loader";
-import { useSelector } from "react-redux";
 
 const Header = ({ mobileMenu, setMobileMenu }) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const { loading } = useSelector(({ generalSlice }) => generalSlice);
 
   const navigate = useNavigate();
 
@@ -37,8 +34,6 @@ const Header = ({ mobileMenu, setMobileMenu }) => {
 
   return (
     <div className="sticky top-0 z-10 flex flex-row items-center justify-between h-14 px-4 md:px-5 bg-white dark:bg-black">
-      {loading && <Loader />}
-
       <div className="flex h-5 items-center">
         {pageName !== "video" && (
           <div
