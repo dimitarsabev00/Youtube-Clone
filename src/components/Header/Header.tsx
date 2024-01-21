@@ -10,7 +10,7 @@ import { IoIosSearch } from "react-icons/io";
 import { RiVideoAddLine } from "react-icons/ri";
 import { FiBell } from "react-icons/fi";
 import { CgClose } from "react-icons/cg";
-import Loader from "../Loader/Loader";
+import Loader from "../Loader";
 import { useSelector } from "react-redux";
 
 const Header = ({ mobileMenu, setMobileMenu }) => {
