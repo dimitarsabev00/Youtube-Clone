@@ -18,7 +18,7 @@ const RoutesComp = () => {
           }
         />
         <Route
-          path="/searchResult/:searchQuery"
+          path="/search/:searchTerm"
           element={
             <SearchResult
               mobileMenu={mobileMenu}

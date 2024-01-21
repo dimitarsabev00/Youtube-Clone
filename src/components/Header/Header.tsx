@@ -10,23 +10,31 @@ import { IoIosSearch } from "react-icons/io";
 import { RiVideoAddLine } from "react-icons/ri";
 import { FiBell } from "react-icons/fi";
 import { CgClose } from "react-icons/cg";
+import { AiOutlineClose } from "react-icons/ai";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { changeSearchTerm, clearSearchTerm, clearVideos } from "../../store";
+import { getSearchPageVideos } from "../../store/reducers/getSearchPageVideos";
 
 const Header = ({ mobileMenu, setMobileMenu }) => {
-  const [searchQuery, setSearchQuery] = useState("");
-
+  const location = useLocation();
   const navigate = useNavigate();
-
-  const searchQueryHandler = (event) => {
+  const dispatch = useAppDispatch();
+  const searchTerm = useAppSelector(
+    ({ generalSlice }) => generalSlice.searchTerm
+  );
+  const handleSearch = (event) => {
     if (
-      (event?.key === "Enter" || event === "searchButton") &&
-      searchQuery?.length > 0
+      (event.key === "Enter" || event === "searchButton") &&
+      searchTerm.length > 0
     ) {
-      navigate(`/search/${searchQuery}`);
+      navigate(`/search/${searchTerm}`);
+      dispatch(clearVideos());
+      dispatch(getSearchPageVideos(false));
     }
   };
 
   const mobileMenuToggle = () => {
-    setMobileMenu((prev) => !prev);
+    setMobileMenu((prev: boolean) => !prev);
   };
 
   const { pathname } = useLocation();
@@ -47,7 +55,14 @@ const Header = ({ mobileMenu, setMobileMenu }) => {
             )}
           </div>
         )}
-        <Link to="/" className="flex h-5 items-center">
+        <Link
+          to="/"
+          className="flex h-5 items-center"
+          onClick={() => {
+            dispatch(clearSearchTerm());
+            dispatch(clearVideos());
+          }}
+        >
           <img
             className="h-full hidden dark:md:block"
             src={ytLogo}
@@ -64,15 +79,21 @@ const Header = ({ mobileMenu, setMobileMenu }) => {
           <input
             type="text"
             className="bg-transparent outline-none text-white pr-5 pl-5 md:pl-0 w-44 md:group-focus-within:pl-0 md:w-64 lg:w-[500px]"
-            onChange={(e) => setSearchQuery(e.target.value)}
-            onKeyUp={searchQueryHandler}
+            onChange={(e) => dispatch(changeSearchTerm(e.target.value))}
+            onKeyUp={handleSearch}
             placeholder="Search"
-            value={searchQuery}
+            value={searchTerm}
+          />
+          <AiOutlineClose
+            className={`text-xl text-white cursor-pointer mt-2 mr-2 ${
+              !searchTerm ? "invisible" : "visible"
+            }`}
+            onClick={() => dispatch(clearSearchTerm())}
           />
         </div>
         <button
           className="w-[40px] md:w-[60px] h-8 md:h-10 flex items-center justify-center border border-l-0 border-[#303030] rounded-r-3xl bg-white/[0.1]"
-          onClick={() => searchQueryHandler("searchButton")}
+          onClick={() => handleSearch("searchButton")}
         >
           <IoIosSearch className="text-white text-xl" />
         </button>
