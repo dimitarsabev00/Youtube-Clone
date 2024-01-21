@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import generalSlice from "./slices/generalSlice.ts";
+import generalSlice from "./slices/generalSlice";
 
 export * from "./slices/generalSlice";
 

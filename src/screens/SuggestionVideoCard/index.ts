@@ -1,1 +1,1 @@
-export { default } from './SuggestionVideoCard.tsx'
+export { default } from './SuggestionVideoCard'

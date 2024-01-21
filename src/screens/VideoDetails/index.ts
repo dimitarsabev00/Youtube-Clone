@@ -1,1 +1,1 @@
-export { default } from './VideoDetails.tsx'
+export { default } from './VideoDetails'

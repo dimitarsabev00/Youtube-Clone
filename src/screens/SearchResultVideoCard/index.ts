@@ -1,1 +1,1 @@
-export { default } from './SearchResultVideoCard.tsx'
+export { default } from './SearchResultVideoCard'

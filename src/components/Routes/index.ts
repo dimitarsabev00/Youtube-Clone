@@ -1,1 +1,1 @@
-export { default } from './Routes.tsx'
+export { default } from './Routes'
