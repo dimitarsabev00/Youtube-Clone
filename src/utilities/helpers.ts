@@ -218,5 +218,94 @@ export const convertRawViewstoString = (
     : Math.abs(Number(labelValue)).toString();
 };
 
+export const parseRecommendedData = async (items: Item[], videoId: string) => {
+  try {
+    const videoIds: string[] = [];
+    const channelIds: string[] = [];
+    const newItems: Item[] = [];
+    items.forEach((item: Item) => {
+      channelIds.push(item.snippet.channelId);
+      if (item.contentDetails?.upload?.videoId) {
+        videoIds.push(item.contentDetails.upload.videoId);
+        newItems.push(item);
+      }
+    });
 
+    const {
+      data: { items: videosData },
+    } = await axios.get(
+      `${BASE_URL}/videos?part=contentDetails,statistics&id=${videoIds.join(
+        ","
+      )}&key=${API_KEY}`
+    );
 
+    const parsedData: RecommendedVideos[] = [];
+    newItems.forEach((item, index) => {
+      if (index >= videosData.length) return;
+      if (videoId === item?.contentDetails?.upload?.videoId) return;
+      parsedData.push({
+        videoId: item.contentDetails.upload.videoId,
+        videoTitle: item.snippet.title,
+        videoThumbnail: item.snippet.thumbnails.medium.url,
+        videoDuration: parseVideoDuration(
+          videosData[index].contentDetails.duration
+        ),
+        videoViews: convertRawViewstoString(
+          videosData[index].statistics.viewCount
+        ),
+        videoAge: timeSince(new Date(item.snippet.publishedAt)),
+        channelInfo: {
+          id: item.snippet.channelId,
+          name: item.snippet.channelTitle,
+        },
+      });
+    });
+
+    return parsedData;
+  } catch (err) {
+    console.log(err);
+  }
+};
+export const parseDataVideoDetails = async (item: {
+  snippet: {
+    channelId: string;
+    title: string;
+    description: string;
+    publishedAt: Date;
+    channelTitle: string;
+  };
+  id: string;
+  statistics: { viewCount: string; likeCount: string };
+}) => {
+  const {
+    data: {
+      items: [
+        {
+          snippet: {
+            thumbnails: {
+              default: { url: channelImage },
+            },
+          },
+          statistics: { subscriberCount },
+        },
+      ],
+    },
+  } = await axios.get(
+    `${BASE_URL}/channels?part=snippet,statistics&id=${item.snippet.channelId}&key=${API_KEY}`
+  );
+
+  return {
+    videoId: item.id,
+    videoTitle: item.snippet.title,
+    videoDescription: item.snippet.description,
+    videoViews: parseInt(item.statistics.viewCount).toLocaleString(),
+    videoLikes: convertRawViewstoString(item.statistics.likeCount),
+    videoAge: timeSince(new Date(item.snippet.publishedAt)),
+    channelInfo: {
+      id: item.snippet.channelId,
+      image: channelImage,
+      name: item.snippet.channelTitle,
+      subscribers: convertRawViewstoString(subscriberCount, true),
+    },
+  };
+};

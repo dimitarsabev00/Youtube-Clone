@@ -3,6 +3,8 @@ import { InitialState } from "../../Types";
 import store from "..";
 import { getHomePageVideos } from "../reducers/getHomePageVideos";
 import { getSearchPageVideos } from "../reducers/getSearchPageVideos";
+import { getVideoDetails } from "../reducers/getVideoDetails";
+import { getRecommendedVideos } from "../reducers/getRecommendedVideos";
 
 const initialState: InitialState = {
   videos: [],
@@ -36,6 +38,12 @@ export const generalSlice = createSlice({
     builder.addCase(getSearchPageVideos.fulfilled, (state, action) => {
       state.videos = action.payload.parsedData;
       state.nextPageToken = action.payload.nextPageToken;
+    });
+    builder.addCase(getVideoDetails.fulfilled, (state, action) => {
+      state.currentPlaying = action.payload;
+    });
+    builder.addCase(getRecommendedVideos.fulfilled, (state, action) => {
+      state.recommendedVideos = action.payload.parsedData;
     });
   },
 });

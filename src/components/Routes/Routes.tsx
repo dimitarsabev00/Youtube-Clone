@@ -26,7 +26,15 @@ const RoutesComp = () => {
             />
           }
         />
-        <Route path="/video/:id" element={<VideoDetails />} />
+        <Route
+          path="/watch/:id"
+          element={
+            <VideoDetails
+              mobileMenu={mobileMenu}
+              setMobileMenu={setMobileMenu}
+            />
+          }
+        />
       </Routes>
     </>
   );
