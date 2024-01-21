@@ -1,10 +1,10 @@
-import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import { Routes } from "./components";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setGeneralFields, startLoading, stopLoading } from "./store";
 import { fetchDataFromApi } from "./utilities/api";
+import React from "react";
 
 const App = () => {
   const { selectedCategory } = useSelector(({ generalSlice }) => generalSlice);
