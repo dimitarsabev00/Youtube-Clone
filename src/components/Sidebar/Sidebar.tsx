@@ -5,25 +5,25 @@ import { useNavigate } from "react-router";
 import { categories } from "../../utilities";
 import SidebarItem from "./SidebarItem";
 import { useDispatch, useSelector } from "react-redux";
-import { setGeneralFields } from "../../store";
+// import { setGeneralFields } from "../../store";
 
 const Sidebar = () => {
   const { selectedCategory } = useSelector(({ generalSlice }) => generalSlice);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const clickHandler = (name, type) => {
-    switch (type) {
-      case "category":
-        return dispatch(setGeneralFields({ selectedCategory: name }));
-      case "home":
-        return dispatch(setGeneralFields({ selectedCategory: name }));
-      case "menu":
-        return false;
-      default:
-        break;
-    }
-  };
+  // const clickHandler = (name, type) => {
+  //   switch (type) {
+  //     case "category":
+  //       return dispatch(setGeneralFields({ selectedCategory: name }));
+  //     case "home":
+  //       return dispatch(setGeneralFields({ selectedCategory: name }));
+  //     case "menu":
+  //       return false;
+  //     default:
+  //       break;
+  //   }
+  // };
   return (
     <div
       className={`w-[240px] overflow-y-auto h-full py-4 bg-black relative z-10`}
@@ -36,7 +36,7 @@ const Sidebar = () => {
                 text={item.type === "home" ? "Home" : item.name}
                 icon={item.icon}
                 onClick={() => {
-                  clickHandler(item.name, item.type);
+                  // clickHandler(item.name, item.type);
                   navigate("/");
                 }}
                 className={`${
