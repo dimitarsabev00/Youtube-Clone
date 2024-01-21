@@ -1,6 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { InitialState } from "../../Types";
 import store from "..";
+import { getHomePageVideos } from "../reducers/getHomePageVideos";
 
 const initialState: InitialState = {
   videos: [],
@@ -15,7 +16,12 @@ export const generalSlice = createSlice({
   name: "generalSlice",
   initialState,
   reducers: {},
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder.addCase(getHomePageVideos.fulfilled, (state, action) => {
+      state.videos = action.payload.parsedData;
+      state.nextPageToken = action.payload.nextPageToken;
+    });
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
