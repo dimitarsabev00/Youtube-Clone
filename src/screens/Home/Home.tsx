@@ -7,11 +7,17 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { getHomePageVideos } from "../../store/reducers/getHomePageVideos";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { HomePageVideos } from "../../Types";
+import { clearVideos } from "../../store";
 
 const Home = ({ mobileMenu, setMobileMenu }) => {
   const dispatch = useAppDispatch();
   const videos = useAppSelector(({ generalSlice }) => generalSlice.videos);
 
+  useEffect(() => {
+    return () => {
+      dispatch(clearVideos());
+    };
+  }, [dispatch]);
   useEffect(() => {
     dispatch(getHomePageVideos(false));
   }, []);

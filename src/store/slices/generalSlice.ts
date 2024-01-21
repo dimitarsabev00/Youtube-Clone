@@ -15,7 +15,12 @@ const initialState: InitialState = {
 export const generalSlice = createSlice({
   name: "generalSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    clearVideos: (state) => {
+      state.videos = [];
+      state.nextPageToken = null;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getHomePageVideos.fulfilled, (state, action) => {
       state.videos = action.payload.parsedData;
@@ -23,6 +28,8 @@ export const generalSlice = createSlice({
     });
   },
 });
+
+export const { clearVideos } = generalSlice.actions;
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
