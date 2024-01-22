@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import React from "react";
 
 const App = () => {
-  const { selectedCategory } = useSelector(({ generalSlice }) => generalSlice);
-  const dispatch = useDispatch();
+  // const { selectedCategory } = useSelector(({ generalSlice }) => generalSlice);
+  // const dispatch = useDispatch();
   // useEffect(() => {
   //   fetchSelectedCategoryData(selectedCategory);
   // }, [selectedCategory]);
