@@ -1,8 +1,5 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import { Loader, Sidebar, VideoCard } from "../../components";
-import { useSelector } from "react-redux";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { getHomePageVideos } from "../../store/reducers/getHomePageVideos";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -40,7 +37,6 @@ const Home = ({ mobileMenu, setMobileMenu }) => {
               next={() => dispatch(getHomePageVideos(true))}
               hasMore={videos.length < 500}
               loader={<Loader />}
-              height={650}
             >
               <div className="grid gap-y-14 gap-x-8 grid-cols-4 p-8">
                 {videos.map((item: HomePageVideos) => {
