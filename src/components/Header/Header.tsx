@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -21,6 +20,9 @@ const Header = ({ mobileMenu, setMobileMenu }) => {
   const dispatch = useAppDispatch();
   const searchTerm = useAppSelector(
     ({ generalSlice }) => generalSlice.searchTerm
+  );
+  const {photoURL} = useAppSelector(
+    ({ generalSlice }) => generalSlice.user
   );
   const handleSearch = (event) => {
     if (
@@ -111,7 +113,7 @@ const Header = ({ mobileMenu, setMobileMenu }) => {
           </div>
         </div>
         <div className="flex h-8 w-8 overflow-hidden rounded-full md:ml-4">
-          <img src="https://xsgames.co/randomusers/assets/avatars/female/67.jpg" />
+          <img src={photoURL} />
         </div>
       </div>
     </div>
