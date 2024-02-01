@@ -14,7 +14,7 @@ const initialState: InitialState = {
   searchResults: [],
   nextPageToken: null,
   recommendedVideos: [],
-  user: null,
+  user: JSON.parse(localStorage.getItem('currentUser')) || null,
 };
 
 export const generalSlice = createSlice({
