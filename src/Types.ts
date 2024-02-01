@@ -5,8 +5,12 @@ export interface InitialState {
   searchResults: [];
   nextPageToken: string | null;
   recommendedVideos: RecommendedVideos[];
+  user: CurrentUser;
 }
-
+export interface CurrentUser {
+  displayName: string;
+  photoURL: string;
+}
 export interface HomePageVideos {
   videoId: string;
   videoTitle: string;

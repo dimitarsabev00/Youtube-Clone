@@ -1,16 +1,25 @@
-import { Routes, Route } from "react-router-dom";
-import { Home, SearchResult, VideoDetails } from "../../screens";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { Home, Login, SearchResult, VideoDetails } from "../../screens";
 import Header from "../Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
+import { useSelector } from "react-redux";
 
 const RoutesComp = () => {
   const [mobileMenu, setMobileMenu] = useState(true);
+  const { user, loading } = useSelector(({ generalSlice }) => generalSlice);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }, [user, loading, navigate]);
   return (
     <>
       <Header mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} />
       <Routes>
+        <Route path="/login" element={<Login />} />
         <Route
           path="/"
           element={

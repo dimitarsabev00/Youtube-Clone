@@ -5,6 +5,7 @@ import { getHomePageVideos } from "../reducers/getHomePageVideos";
 import { getSearchPageVideos } from "../reducers/getSearchPageVideos";
 import { getVideoDetails } from "../reducers/getVideoDetails";
 import { getRecommendedVideos } from "../reducers/getRecommendedVideos";
+import { loginUserWithGoogle } from "../reducers/loginWithGoogle";
 
 const initialState: InitialState = {
   videos: [],
@@ -13,6 +14,7 @@ const initialState: InitialState = {
   searchResults: [],
   nextPageToken: null,
   recommendedVideos: [],
+  user: null,
 };
 
 export const generalSlice = createSlice({
@@ -44,6 +46,9 @@ export const generalSlice = createSlice({
     });
     builder.addCase(getRecommendedVideos.fulfilled, (state, action) => {
       state.recommendedVideos = action.payload.parsedData;
+    });
+    builder.addCase(loginUserWithGoogle.fulfilled, (state, action) => {
+      state.user = action.payload.user;
     });
   },
 });
