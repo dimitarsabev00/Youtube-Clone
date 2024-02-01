@@ -38,7 +38,6 @@ const SearchResult = ({ mobileMenu, setMobileMenu }) => {
               next={() => dispatch(getSearchPageVideos(true))}
               hasMore={videos.length < 500}
               loader={<Loader />}
-              height={600}
             >
               {videos.map((item: HomePageVideos) => {
                 return (
