@@ -29,14 +29,15 @@ const Home = ({ mobileMenu, setMobileMenu }) => {
           // FIX BUG WITH RESPONSIVE HERE!
           // className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-5  `}
 
-          className={`grid grid-cols-1 gap-4 p-5  `}
+          className={`grid grid-cols-1 gap-4 p-5 `}
         >
           {videos.length ? (
             <InfiniteScroll
               dataLength={videos.length}
               next={() => dispatch(getHomePageVideos(true))}
-              hasMore={videos.length < 500}
+              hasMore
               loader={<Loader />}
+              height={800}
             >
               <div className="grid gap-y-14 gap-x-8 grid-cols-4 p-8">
                 {videos.map((item: HomePageVideos) => {
