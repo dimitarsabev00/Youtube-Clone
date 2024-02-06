@@ -17,7 +17,7 @@ const RoutesComp = () => {
   }, [user, loading, navigate]);
   return (
     <>
-      <Header mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} />
+      {user && <Header mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} />}
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route
