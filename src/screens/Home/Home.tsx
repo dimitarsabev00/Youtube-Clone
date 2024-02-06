@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Loader, Sidebar, VideoCard } from "../../components";
+import { Loader, Sidebar, SkeletonVideo, VideoCard } from "../../components";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { getHomePageVideos } from "../../store/reducers/getHomePageVideos";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -30,23 +30,24 @@ const Home = ({ mobileMenu, setMobileMenu }) => {
 
           className={`grid grid-cols-1 gap-4 p-5 `}
         >
-          {videos.length ? (
-            <InfiniteScroll
-              dataLength={videos.length}
-              next={() => dispatch(getHomePageVideos(true))}
-              hasMore
-              loader={<Loader />}
-              height={800}
-            >
-              <div className="grid gap-y-14 gap-x-8 grid-cols-4 p-8">
-                {videos.map((item: HomePageVideos) => {
-                  return <VideoCard data={item} key={item.videoId} />;
-                })}
-              </div>
-            </InfiniteScroll>
-          ) : null}
+          <InfiniteScroll
+            dataLength={videos.length}
+            next={() => dispatch(getHomePageVideos(true))}
+            hasMore
+            loader={<Loader />}
+            height={800}
+          >
+            <div className="grid gap-y-14 gap-x-8 grid-cols-4 p-8">
+
+
+              {videos.length
+                ? videos.map((item: HomePageVideos) => {
+                    return <VideoCard data={item} key={item.videoId} />;
+                  })
+                : [...Array(20)].map(() => <SkeletonVideo />)}
+            </div>
+          </InfiniteScroll>
         </div>
-        {!videos.length && <Loader />}
       </div>
     </div>
   );
