@@ -19,7 +19,6 @@ const Home = ({ mobileMenu, setMobileMenu }) => {
     dispatch(getHomePageVideos(false));
   }, []);
   return (
-    // FIX BUG WITH HEIGHT FOR CONTAINER ON THE PAGE!
     <div className="flex flex-row h-[calc(100%-56px)]">
       {mobileMenu ? (
         <Sidebar mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} />
