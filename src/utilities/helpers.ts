@@ -79,7 +79,7 @@ export const parseData = async (items: any[]) => {
     );
 
     const parsedChannelsData: { id: string; image: string }[] = [];
-    channelsData.forEach(
+    channelsData?.forEach(
       (channel: {
         id: string;
         snippet: { thumbnails: { default: { url: string } } };
@@ -114,10 +114,10 @@ export const parseData = async (items: any[]) => {
         },
         index: number
       ) => {
-        const { image: channelImage } = parsedChannelsData.find(
+        const findCorrectParsedChannelsData = parsedChannelsData.find(
           (data) => data.id === item.snippet.channelId
         )!;
-        if (channelImage)
+        if (findCorrectParsedChannelsData?.image)
           parsedData.push({
             videoId: item.id.videoId,
             videoTitle: item.snippet.title,
@@ -133,7 +133,7 @@ export const parseData = async (items: any[]) => {
             videoAge: timeSince(new Date(item.snippet.publishedAt)),
             channelInfo: {
               id: item.snippet.channelId,
-              image: channelImage,
+              image: findCorrectParsedChannelsData?.image,
               name: item.snippet.channelTitle,
             },
           });
