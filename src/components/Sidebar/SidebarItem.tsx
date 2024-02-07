@@ -1,8 +1,13 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React from "react";
 
-const SidebarItem = ({ text, icon, className, onClick }) => {
+interface SidebarItemProps {
+  text: string;
+  icon: React.ReactNode;
+  className: string;
+  onClick: () => void;
+}
+
+const SidebarItem: React.FC<SidebarItemProps> = ({ text, icon, className, onClick }) => {
   return (
     <div
       className={
