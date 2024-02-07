@@ -40,6 +40,8 @@ const SearchResult: React.FC<SearchResultScreenProps> = ({ mobileMenu, setMobile
               next={() => dispatch(getSearchPageVideos(true))}
               hasMore={videos.length < 500}
               loader={<Loader />}
+            height={800}
+
             >
               {videos.map((item: HomePageVideos) => {
                 return (
