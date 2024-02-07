@@ -6,7 +6,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const RoutesComp = () => {
-  const [mobileMenu, setMobileMenu] = useState(true);
+  const [mobileMenu, setMobileMenu] = useState<boolean>(true);
   const { user, loading } = useSelector(({ generalSlice }) => generalSlice);
   const navigate = useNavigate();
 
