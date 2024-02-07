@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Loader, Sidebar,SearchResultVideoCard } from "../../components";
+import { Loader, Sidebar, SearchResultVideoCard } from "../../components";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { clearVideos } from "../../store";
 import { getSearchPageVideos } from "../../store/reducers/getSearchPageVideos";
@@ -11,7 +11,10 @@ type SearchResultScreenProps = {
   mobileMenu: boolean;
   setMobileMenu: React.Dispatch<React.SetStateAction<boolean>>;
 };
-const SearchResult: React.FC<SearchResultScreenProps> = ({ mobileMenu, setMobileMenu }) => {
+const SearchResult: React.FC<SearchResultScreenProps> = ({
+  mobileMenu,
+  setMobileMenu,
+}) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const videos = useAppSelector(({ generalSlice }) => generalSlice.videos);
@@ -29,9 +32,7 @@ const SearchResult: React.FC<SearchResultScreenProps> = ({ mobileMenu, setMobile
 
   return (
     <div className="flex flex-row h-[calc(100%-56px)]">
-      {mobileMenu ? (
-        <Sidebar mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} />
-      ) : null}
+      {mobileMenu && <Sidebar />}
       <div className="grow w-[calc(100%-240px)] h-full overflow-y-auto bg-black">
         <div className="grid grid-cols-1 gap-2 p-5">
           {videos.length ? (
@@ -40,8 +41,7 @@ const SearchResult: React.FC<SearchResultScreenProps> = ({ mobileMenu, setMobile
               next={() => dispatch(getSearchPageVideos(true))}
               hasMore={videos.length < 500}
               loader={<Loader />}
-            height={800}
-
+              height={800}
             >
               {videos.map((item: HomePageVideos) => {
                 return (

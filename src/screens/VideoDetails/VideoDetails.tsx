@@ -13,7 +13,10 @@ type VideoDetailsScreenProps = {
   mobileMenu: boolean;
   setMobileMenu: React.Dispatch<React.SetStateAction<boolean>>;
 };
-const VideoDetails: React.FC<VideoDetailsScreenProps> = ({ mobileMenu, setMobileMenu }) => {
+const VideoDetails: React.FC<VideoDetailsScreenProps> = ({
+  mobileMenu,
+  setMobileMenu,
+}) => {
   const [showMoreStatus, setShowMoreStatus] = useState<boolean>(false);
   const { id } = useParams();
   const dispatch = useAppDispatch();
@@ -40,9 +43,7 @@ const VideoDetails: React.FC<VideoDetailsScreenProps> = ({ mobileMenu, setMobile
 
   return (
     <div className="flex justify-center flex-row h-[calc(100%-56px)] bg-black">
-      {mobileMenu ? (
-        <Sidebar mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} />
-      ) : null}
+      {mobileMenu && <Sidebar />}
       {currentPlaying && currentPlaying?.videoId === id && (
         <div className="w-full  flex flex-col lg:flex-row px-5">
           <div className="flex flex-col lg:w-[calc(100%-350px)] xl:w-[calc(100%-400px)] px-4 py-3 lg:py-6 overflow-y-auto">
