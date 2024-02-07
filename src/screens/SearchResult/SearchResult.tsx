@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Loader, Sidebar,SearchResultVideoCard } from "../../components";
@@ -8,7 +7,11 @@ import { getSearchPageVideos } from "../../store/reducers/getSearchPageVideos";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { HomePageVideos } from "../../Types";
 
-const SearchResult = ({ mobileMenu, setMobileMenu }) => {
+type SearchResultScreenProps = {
+  mobileMenu: boolean;
+  setMobileMenu: React.Dispatch<React.SetStateAction<boolean>>;
+};
+const SearchResult: React.FC<SearchResultScreenProps> = ({ mobileMenu, setMobileMenu }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const videos = useAppSelector(({ generalSlice }) => generalSlice.videos);

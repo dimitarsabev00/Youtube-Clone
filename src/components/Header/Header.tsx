@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import ytLogo from "../../assets/images/yt-logo.png";
@@ -14,16 +14,18 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { changeSearchTerm, clearSearchTerm, clearVideos } from "../../store";
 import { getSearchPageVideos } from "../../store/reducers/getSearchPageVideos";
 
-const Header = ({ mobileMenu, setMobileMenu }) => {
+type HeaderProps = {
+  mobileMenu: boolean;
+  setMobileMenu: React.Dispatch<React.SetStateAction<boolean>>;
+};
+const Header: React.FC<HeaderProps> = ({ mobileMenu, setMobileMenu }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const searchTerm = useAppSelector(
     ({ generalSlice }) => generalSlice.searchTerm
   );
-  const {photoURL} = useAppSelector(
-    ({ generalSlice }) => generalSlice.user
-  );
+  const { photoURL } = useAppSelector(({ generalSlice }) => generalSlice.user);
   const handleSearch = (event) => {
     if (
       (event.key === "Enter" || event === "searchButton") &&

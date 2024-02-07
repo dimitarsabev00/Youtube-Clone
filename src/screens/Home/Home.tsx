@@ -6,7 +6,11 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { HomePageVideos } from "../../Types";
 import { clearVideos } from "../../store";
 
-const Home = ({ mobileMenu, setMobileMenu }) => {
+type HomeScreenProps = {
+  mobileMenu: boolean;
+  setMobileMenu: React.Dispatch<React.SetStateAction<boolean>>;
+};
+const Home: React.FC<HomeScreenProps> = ({ mobileMenu, setMobileMenu }) => {
   const dispatch = useAppDispatch();
   const videos = useAppSelector(({ generalSlice }) => generalSlice.videos);
 
@@ -38,8 +42,6 @@ const Home = ({ mobileMenu, setMobileMenu }) => {
             height={800}
           >
             <div className="grid gap-y-14 gap-x-8 grid-cols-4 p-8">
-
-
               {videos.length
                 ? videos.map((item: HomePageVideos) => {
                     return <VideoCard data={item} key={item.videoId} />;

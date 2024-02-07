@@ -9,8 +9,11 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { getVideoDetails } from "../../store/reducers/getVideoDetails";
 import { getRecommendedVideos } from "../../store/reducers/getRecommendedVideos";
 import { Sidebar, SuggestionVideoCard } from "../../components";
-
-const VideoDetails = ({ mobileMenu, setMobileMenu }) => {
+type VideoDetailsScreenProps = {
+  mobileMenu: boolean;
+  setMobileMenu: React.Dispatch<React.SetStateAction<boolean>>;
+};
+const VideoDetails: React.FC<VideoDetailsScreenProps> = ({ mobileMenu, setMobileMenu }) => {
   const [showMoreStatus, setShowMoreStatus] = useState<boolean>(false);
   const { id } = useParams();
   const dispatch = useAppDispatch();
