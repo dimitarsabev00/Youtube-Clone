@@ -5,11 +5,10 @@ import { BsFillCheckCircleFill, BsThreeDots } from "react-icons/bs";
 import { AiOutlineLike } from "react-icons/ai";
 import { FaShare } from "react-icons/fa";
 
-import SuggestionVideoCard from "../SuggestionVideoCard/SuggestionVideoCard";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { getVideoDetails } from "../../store/reducers/getVideoDetails";
 import { getRecommendedVideos } from "../../store/reducers/getRecommendedVideos";
-import { Sidebar } from "../../components";
+import { Sidebar, SuggestionVideoCard } from "../../components";
 
 const VideoDetails = ({ mobileMenu, setMobileMenu }) => {
   const [showMoreStatus, setShowMoreStatus] = useState<boolean>(false);

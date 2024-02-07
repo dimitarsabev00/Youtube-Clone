@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import SearchResultVideoCard from "../SearchResultVideoCard/SearchResultVideoCard";
-import { Loader, Sidebar } from "../../components";
+import { Loader, Sidebar,SearchResultVideoCard } from "../../components";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { clearVideos } from "../../store";
 import { getSearchPageVideos } from "../../store/reducers/getSearchPageVideos";
