@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import React from "react";
 
 const App = () => {
+  // MUST MODIFY THIS FEATURE
   // const { selectedCategory } = useSelector(({ generalSlice }) => generalSlice);
   // const dispatch = useDispatch();
   // useEffect(() => {

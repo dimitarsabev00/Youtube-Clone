@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { categories } from "../../utilities";
@@ -12,6 +10,8 @@ const Sidebar = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  // MUST MODIFY THIS FEATURE
   // const clickHandler = (name, type) => {
   //   switch (type) {
   //     case "category":
