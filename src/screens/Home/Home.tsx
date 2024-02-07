@@ -24,9 +24,7 @@ const Home: React.FC<HomeScreenProps> = ({ mobileMenu, setMobileMenu }) => {
   }, []);
   return (
     <div className="flex flex-row h-[calc(100%-56px)]">
-      {mobileMenu ? (
-        <Sidebar mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} />
-      ) : null}
+      {mobileMenu && <Sidebar />}
       <div className="grow w-[calc(100%-240px)] h-full overflow-y-auto bg-black">
         <div
           // FIX BUG WITH RESPONSIVE HERE!
